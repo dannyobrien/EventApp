@@ -51,7 +51,7 @@ $statement = $gateway->getEventById($id);
                     echo '</tr>';
                     echo '<tr>';
                     echo '<td>Location</td>'
-                    . '<td>' . $row['location'] . '</td>';
+                    . '<td>' . $row['location_id'] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
                     echo '<td>Number of Attendees</td>'
@@ -78,5 +78,7 @@ $statement = $gateway->getEventById($id);
             <a class="deleteEvent" href="deleteEvent.php?id=<?php echo $row['id']; ?>">
                 Delete Event</a>
         </p>
+        <?php require 'footer.php'; ?>
+        <?php require 'scripts.php'; ?>  
     </body>
 </html>

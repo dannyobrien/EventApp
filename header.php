@@ -1,3 +1,3 @@
 <div class="container">
-    <h1>Software Company Application</h1>
+    <h1>Easy Event Management</h1>
 </div>

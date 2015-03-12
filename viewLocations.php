@@ -1,13 +1,13 @@
 <?php
 require_once 'Connection.php';
-require_once 'EventTableGateway.php';
+require_once 'LocationTableGateway.php';
 
 require 'ensureUserLoggedIn.php';
 
 $connection = Connection::getInstance();
-$gateway = new EventTableGateway($connection);
+$gateway = new LocationTableGateway($connection);
 
-$statement = $gateway->getEvents();
+$statement = $gateway->getlocations();
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,13 +30,12 @@ $statement = $gateway->getEvents();
         <table>
             <thead>
                 <tr>
-                    <th>Event Title</th>
-                    <th>Email</th>
-                    <th>Location</th>
-                    <th>Attendees</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Entry Fee</th>
+                    <th>Location Name</th>
+                    <th>Location Address</th>
+                    <th>Maximum Attendees</th>
+                    <th>Manager Name</th>
+                    <th>Manager Email</th>
+                    <th>Manager Mobile</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,15 +44,14 @@ $statement = $gateway->getEvents();
                 while ($row) {
 
 
-                    echo '<td>' . $row['title'] . '</td>';
-                    echo '<td>' . $row['email'] . '</td>';
-                    echo '<td>' . $row['location_id'] . '</td>';
-                    echo '<td>' . $row['attendees'] . '</td>';
-                    echo '<td>' . $row['date'] . '</td>';
-                    echo '<td>' . $row['time'] . '</td>';
-                    echo '<td>' . $row['price'] . '</td>';
+                    echo '<td>' . $row['name'] . '</td>';
+                    echo '<td>' . $row['address'] . '</td>';
+                    echo '<td>' . $row['maxAttendees'] . '</td>';
+                    echo '<td>' . $row['man_name'] . '</td>';
+                    echo '<td>' . $row['man_email'] . '</td>';
+                    echo '<td>' . $row['man_mobile'] . '</td>';
                     echo '<td>'
-                    . '<a href="viewEvent.php?id='.$row['id'].'">View</a> '
+                    . '<a href="viewLocation.php?id='.$row['id'].'">View</a> '
                     . '<a href="editEventForm.php?id='.$row['id'].'">Edit</a> '
                     . '<a class="deleteEvent" href="deleteEvent.php?id='.$row['id'].'">Delete</a> '
                     . '</td>';

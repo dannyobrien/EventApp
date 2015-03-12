@@ -28,7 +28,7 @@ $statement = $gateway->getEvents();
         }
         ?>
       
-        <p><a href="createEventForm.php">Create Event</a></p>
+        <p>Home Page</p>
         <?php require 'footer.php'; ?>
         <?php require 'scripts.php'; ?>    
     </body>

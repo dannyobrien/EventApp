@@ -1,6 +1,6 @@
 <?php
 
-class EventTableGateway {
+class LocationTableGateway {
 
     private $connection;
 
@@ -8,23 +8,23 @@ class EventTableGateway {
         $this->connection = $c;
     }
 
-    public function getEvents() {
+    public function getLocations() {
         // execute a query to get all events
-        $sqlQuery = "SELECT * FROM event";
+        $sqlQuery = "SELECT * FROM location";
 
         $statement = $this->connection->prepare($sqlQuery);
         $status = $statement->execute();
 
         if (!$status) {
-            die("Could not retrieve event");
+            die("Could not retrieve location");
         }
 
         return $statement;
     }
 
-    public function getEventById($id) {
+    public function getLocationById($id) {
         // execute a query to get the user with the specified id
-        $sqlQuery = "SELECT * FROM event WHERE id = :id";
+        $sqlQuery = "SELECT * FROM location WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
@@ -34,26 +34,25 @@ class EventTableGateway {
         $status = $statement->execute($params);
 
         if (!$status) {
-            die("Could not retrieve Event");
+            die("Could not retrieve location");
         }
 
         return $statement;
     }
 
-    public function insertEvent($t, $em, $l, $a, $d, $ti, $p) {
-        $sqlQuery = "INSERT INTO event " .
-                "(title, email, location_id, attendees, date, time, price) " .
-                "VALUES (:title, :email, :location, :attendees, :date, :time, :price)";
+    public function insertLocation($n, $a, $ma, $mn, $me, $mm) {
+        $sqlQuery = "INSERT INTO location " .
+                "(name, address, maxAttendees, man_name, man_email, man_mobile) " .
+                "VALUES (:name, :address, :maxAttendees, :man_name, :man_email, :man_mobile)";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
-            "title" => $t,
-            "email"=> $em,
-            "location" => $l,
-            "attendees" => $a,
-            "date" => $d,
-            "time" => $ti,
-            "price" => $p
+            "name" => $n,
+            "address"=> $a,
+            "maxAttendees" => $ma,
+            "man_name" => $mn,
+            "man_email" => $me,
+            "man_mobile" => $mm,
         );
 
         $status = $statement->execute($params);
@@ -65,7 +64,7 @@ class EventTableGateway {
         echo '</pre>';
         
         if (!$status) {
-            die("Could not insert event");
+            die("Could not insert location");
         }
 
         $id = $this->connection->lastInsertId();
@@ -73,8 +72,8 @@ class EventTableGateway {
         return $id;
     }
 
-    public function deleteEvent($id) {
-        $sqlQuery = "DELETE FROM event WHERE id = :id";
+    public function deleteLocation($id) {
+        $sqlQuery = "DELETE FROM location WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
@@ -84,34 +83,32 @@ class EventTableGateway {
         $status = $statement->execute($params);
 
         if (!$status) {
-            die("Could not delete event");
+            die("Could not delete location");
         }
 
         return ($statement->rowCount() == 1);
     }
 
-    public function updateEvent($id, $t, $em, $l, $a, $d, $ti, $p) {
+    public function updateLocation($id, $n, $a, $ma, $mn, $me, $mm) {
         $sqlQuery =
-                "UPDATE event SET " .
-                "title = :title, " .
-                "email= :email, " .
-                "location_id = :location, " .
-                "attendees = :attendees, " .
-                "date = :date, " .
-                "time = :time, " .
-                "price = :price " .
+                "UPDATE location SET " .
+                "name = :name, " .
+                "address= :address, " .
+                "maxAttendees = :maxAttendees, " .
+                "man_name = :man_name, " .
+                "man_email = :man_email, " .
+                "man_mobile = :man_mobile, " .
                 "WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
             "id" => $id,
-            "title" => $t,
-            "email" => $em,
-            "location" => $l,
-            "attendees" => $a,
-            "date" => $d,
-            "time" => $ti,
-            "price" => $p
+            "name" => $n,
+            "address" => $a,
+            "maxAttendees" => $ma,
+            "man_name" => $mn,
+            "man_email" => $me,
+            "man_mobile" => $mm,
         );
 
         $status = $statement->execute($params);
