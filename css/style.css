@@ -1,0 +1,30 @@
+body{           /*manages the whole page*/
+padding-left: 550px;
+background: black;
+font-family: 'Rozha One', serif;
+
+}
+#container{      /*Manages the container div attributes*/
+background:black;
+
+}
+#head{      /*Manages the head div attributes*/
+    font-size: 20px;
+    color:grey;
+}
+
+table{      /*manages the table attributes*/
+    text-align:center;
+    color: gray;
+}
+th{     /*Manages the table head attributes*/
+    font-size: 20px;
+    color:gray;
+}
+
+a:hover{        /*change text color when mouse is over it*/
+    color:grey;
+}
+
+
+
