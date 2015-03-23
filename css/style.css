@@ -1,11 +1,10 @@
 body{           /*manages the whole page*/
-padding-left: 550px;
-background: black;
+background: #E4F1FE;
 font-family: 'Rozha One', serif;
 
 }
 #container{      /*Manages the container div attributes*/
-background:black;
+
 
 }
 #head{      /*Manages the head div attributes*/

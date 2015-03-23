@@ -9,8 +9,6 @@ if ($id == "") {
 
 $connection = Connection::getInstance();
 $gateway = new EventTableGateway($connection);
-
-$statement = $gateway->getEvents();
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,43 +22,33 @@ $statement = $gateway->getEvents();
         <?php require 'header.php' ?>
         <?php require 'mainMenu.php' ?>
         
-        <?php 
-        if (isset($message)) {
-            echo '<p>'.$message.'</p>';
-        }
-        ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Event Title</th>
-                    <th>Email</th>
-                    <th>Location</th>
-                    <th>Attendees</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Entry Fee</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $row = $statement->fetch(PDO::FETCH_ASSOC);
-                while ($row) {
+  
+        <div class="container">
+            <h2>Welcome</h2>
 
-                    
-                    echo '<td>' . $row['title'] . '</td>';
-                    echo '<td>' . $row['email'] . '</td>';
-                    echo '<td>' . $row['location'] . '</td>';
-                    echo '<td>' . $row['attendees'] . '</td>';
-                    echo '<td>' . $row['date'] . '</td>';
-                    echo '<td>' . $row['time'] . '</td>';
-                    echo '<td>' . $row['price'] . '</td>';
-                    echo '</tr>';
-                    
-                    $row = $statement->fetch(PDO::FETCH_ASSOC);
-                }
-                ?>
-            </tbody>
-        </table>
+            <p>A software company employs many programmers. For each programmer, the
+                company needs to record the following details: name, email address,
+                mobile phone number, staff number, a description of their skill set,
+                and salary. Each programmer is assigned a manager. Each manager may
+                be assigned a number of programmers. For each manager, the company
+                needs to record the manager’s name, their office number, and their
+                extension number.</p>
+
+            <p>Each programmer will be given one or more computers to use. Each computer
+                will be assigned at most one programmer. For each computer, the company
+                needs to record the make and model of the computer, the operating system
+                it uses, and date the computer was bought, and the purchase price of the
+                computer.</p>
+
+            <p>Each programmer can be assigned to work on a number of projects. Each
+                project can have a number of programmers assigned to it. For each project,
+                the company needs to record the name of the client the project is for, a
+                description of the project requirements, and the start date and proposed
+                end date for the project. For each assignment of a programmer to a project,
+                the date of the assignment needs to be recorded, along with the number of
+                hours per week the programmer should spend on that project.</p>
+
+        </div>
         <?php require 'footer.php'; ?>
         <?php require 'scripts.php'; ?>    
     </body>
